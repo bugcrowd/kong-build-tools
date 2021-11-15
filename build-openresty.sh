@@ -8,7 +8,7 @@ touch $BUILD_OUTPUT
 
 dump_output() {
    echo Tailing the last 500 lines of output:
-   cat $BUILD_OUTPUT  
+   cat $BUILD_OUTPUT
 }
 error_handler() {
   echo ERROR: An error was encountered with the build.
@@ -54,6 +54,7 @@ EDITION=$EDITION \
 --luarocks $RESTY_LUAROCKS_VERSION \
 --kong-nginx-module $KONG_NGINX_MODULE \
 --pcre $RESTY_PCRE_VERSION \
+--opentracing $OPENTRACING_VERSION \
 --work /work $KONG_NGX_BUILD_ARGS >> $BUILD_OUTPUT 2>&1
 
 # The build finished without returning an error so dump a tail of the output

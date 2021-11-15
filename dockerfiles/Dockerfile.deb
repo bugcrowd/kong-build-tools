@@ -28,4 +28,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         m4 \
         file \
         ssh \
-        valgrind
+        valgrind \
+        cmake \
+       && cd /tmp \
+  && git clone --depth 1 -b v1.6.0 https://github.com/opentracing/opentracing-cpp.git \
+  && cd opentracing-cpp \
+  && mkdir .build && cd .build \
+  && cmake -DCMAKE_BUILD_TYPE=Release \
+           -DBUILD_MOCKTRACER=OFF \
+           -DBUILD_STATIC_LIBS=OFF \
+           -DBUILD_TESTING=OFF .. \
+  && make && make install \
